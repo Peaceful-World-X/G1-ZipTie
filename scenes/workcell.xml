@@ -1,0 +1,609 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="G1 | Zip-tie workcell">
+  <compiler angle="radian" meshdir="../assets/vendor/mujoco_menagerie/unitree_g1/assets" />
+  <option integrator="implicitfast" timestep="0.001" iterations="80" gravity="0 0 -9.81" />
+  <default>
+    <default class="g1">
+      <site rgba="1 0 0 1" size="0.01" group="5" />
+      <joint armature="0.01" frictionloss=".02" />
+      <position kp="900" dampratio="1" inheritrange="1" />
+      <default class="visual">
+        <geom group="2" type="mesh" contype="0" conaffinity="0" density="0" material="metal" />
+      </default>
+      <default class="collision">
+        <geom group="3" type="mesh" />
+        <default class="foot">
+          <geom type="sphere" size="0.005" priority="1" friction="0.6" condim="3" />
+        </default>
+      </default>
+    </default>
+  </default>
+  <asset>
+    <material name="black" rgba="0.2 0.2 0.2 1" />
+    <material name="metal" rgba="0.7 0.7 0.7 1" />
+    <mesh file="pelvis.STL" />
+    <mesh file="pelvis_contour_link.STL" />
+    <mesh file="left_hip_pitch_link.STL" />
+    <mesh file="left_hip_roll_link.STL" />
+    <mesh file="left_hip_yaw_link.STL" />
+    <mesh file="left_knee_link.STL" />
+    <mesh file="left_ankle_pitch_link.STL" />
+    <mesh file="left_ankle_roll_link.STL" />
+    <mesh file="right_hip_pitch_link.STL" />
+    <mesh file="right_hip_roll_link.STL" />
+    <mesh file="right_hip_yaw_link.STL" />
+    <mesh file="right_knee_link.STL" />
+    <mesh file="right_ankle_pitch_link.STL" />
+    <mesh file="right_ankle_roll_link.STL" />
+    <mesh name="waist_yaw_link" file="waist_yaw_link_rev_1_0.STL" />
+    <mesh name="waist_roll_link" file="waist_roll_link_rev_1_0.STL" />
+    <mesh name="torso_link" file="torso_link_rev_1_0.STL" />
+    <mesh file="logo_link.STL" />
+    <mesh file="head_link.STL" />
+    <mesh file="left_shoulder_pitch_link.STL" />
+    <mesh file="left_shoulder_roll_link.STL" />
+    <mesh file="left_shoulder_yaw_link.STL" />
+    <mesh file="left_elbow_link.STL" />
+    <mesh file="left_wrist_roll_link.STL" />
+    <mesh file="left_wrist_pitch_link.STL" />
+    <mesh file="left_wrist_yaw_link.STL" />
+    <mesh file="left_rubber_hand.STL" />
+    <mesh file="right_shoulder_pitch_link.STL" />
+    <mesh file="right_shoulder_roll_link.STL" />
+    <mesh file="right_shoulder_yaw_link.STL" />
+    <mesh file="right_elbow_link.STL" />
+    <mesh file="right_wrist_roll_link.STL" />
+    <mesh file="right_wrist_pitch_link.STL" />
+    <mesh file="right_wrist_yaw_link.STL" />
+    <mesh file="right_rubber_hand.STL" />
+    <mesh name="Dex1_base_link" file="D:\Code\G1-ZipTie\assets\vendor\unitree_ros\robots\dexterous_hand_description\dex1_1\meshes\Dex1_base_link.STL" />
+    <mesh name="Dex1_finger_link_1" file="D:\Code\G1-ZipTie\assets\vendor\unitree_ros\robots\dexterous_hand_description\dex1_1\meshes\Dex1_finger_link_1.STL" />
+    <mesh name="Dex1_finger_link_2" file="D:\Code\G1-ZipTie\assets\vendor\unitree_ros\robots\dexterous_hand_description\dex1_1\meshes\Dex1_finger_link_2.STL" />
+    <texture name="sky" type="skybox" builtin="gradient" rgb1=".16 .21 .29" rgb2=".035 .05 .075" width="512" height="3072" />
+    <texture name="mat_tex" type="2d" file="../assets/workcell/cutting_mat.png" />
+    <material name="mat" texture="mat_tex" texrepeat="1 1" specular=".15" shininess=".1" />
+  </asset>
+  <worldbody>
+    <body name="pelvis" pos="0 0 0.793" childclass="g1">
+      <inertial pos="0 0 -0.07605" quat="1 0 -0.000399148 0" mass="3.813" diaginertia="0.010549 0.0093089 0.0079184" />
+      <geom class="visual" material="black" mesh="pelvis" />
+      <geom class="visual" mesh="pelvis_contour_link" />
+      <geom class="collision" mesh="pelvis_contour_link" contype="0" conaffinity="0" />
+      <site name="imu_in_pelvis" pos="0.04525 0 -0.08339" size="0.01" />
+      <body name="left_hip_pitch_link" pos="0 0.064452 -0.1027">
+        <inertial pos="0.002741 0.047791 -0.02606" quat="0.954862 0.293964 0.0302556 0.030122" mass="1.35" diaginertia="0.00181517 0.00153422 0.00116212" />
+        <joint name="left_hip_pitch_joint" axis="0 1 0" range="-2.5307 2.8798" />
+        <geom class="visual" material="black" mesh="left_hip_pitch_link" />
+        <geom class="collision" material="black" mesh="left_hip_pitch_link" contype="0" conaffinity="0" />
+        <body name="left_hip_roll_link" pos="0 0.052 -0.030465" quat="0.996179 0 -0.0873386 0">
+          <inertial pos="0.029812 -0.001045 -0.087934" quat="0.977808 -1.97119e-05 0.205576 -0.0403793" mass="1.52" diaginertia="0.00254986 0.00241169 0.00148755" />
+          <joint name="left_hip_roll_joint" axis="1 0 0" range="-0.5236 2.9671" />
+          <geom class="visual" mesh="left_hip_roll_link" />
+          <geom class="collision" mesh="left_hip_roll_link" contype="0" conaffinity="0" />
+          <body name="left_hip_yaw_link" pos="0.025001 0 -0.12412">
+            <inertial pos="-0.057709 -0.010981 -0.15078" quat="0.600598 0.15832 0.223482 0.751181" mass="1.702" diaginertia="0.00776166 0.00717575 0.00160139" />
+            <joint name="left_hip_yaw_joint" axis="0 0 1" range="-2.7576 2.7576" />
+            <geom class="visual" mesh="left_hip_yaw_link" />
+            <geom class="collision" mesh="left_hip_yaw_link" contype="0" conaffinity="0" />
+            <body name="left_knee_link" pos="-0.078273 0.0021489 -0.17734" quat="0.996179 0 0.0873386 0">
+              <inertial pos="0.005457 0.003964 -0.12074" quat="0.923418 -0.0327699 0.0158246 0.382067" mass="1.932" diaginertia="0.0113804 0.0112778 0.00146458" />
+              <joint name="left_knee_joint" axis="0 1 0" range="-0.087267 2.8798" />
+              <geom class="visual" mesh="left_knee_link" />
+              <geom class="collision" mesh="left_knee_link" contype="0" conaffinity="0" />
+              <body name="left_ankle_pitch_link" pos="0 -9.4445e-05 -0.30001">
+                <inertial pos="-0.007269 0 0.011137" quat="0.603053 0.369225 0.369225 0.603053" mass="0.074" diaginertia="1.89e-05 1.40805e-05 6.9195e-06" />
+                <joint name="left_ankle_pitch_joint" axis="0 1 0" range="-0.87267 0.5236" />
+                <geom class="visual" mesh="left_ankle_pitch_link" />
+                <geom class="collision" mesh="left_ankle_pitch_link" contype="0" conaffinity="0" />
+                <body name="left_ankle_roll_link" pos="0 0 -0.017558">
+                  <inertial pos="0.026505 0 -0.016425" quat="-0.000481092 0.728482 -0.000618967 0.685065" mass="0.608" diaginertia="0.00167218 0.0016161 0.000217621" />
+                  <joint name="left_ankle_roll_joint" axis="1 0 0" range="-0.2618 0.2618" />
+                  <geom class="visual" material="black" mesh="left_ankle_roll_link" />
+                  <geom class="foot" pos="-0.05 0.025 -0.03" contype="0" conaffinity="0" />
+                  <geom class="foot" pos="-0.05 -0.025 -0.03" contype="0" conaffinity="0" />
+                  <geom class="foot" pos="0.12 0.03 -0.03" contype="0" conaffinity="0" />
+                  <geom class="foot" pos="0.12 -0.03 -0.03" contype="0" conaffinity="0" />
+                  <site name="left_foot" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="right_hip_pitch_link" pos="0 -0.064452 -0.1027">
+        <inertial pos="0.002741 -0.047791 -0.02606" quat="0.954862 -0.293964 0.0302556 -0.030122" mass="1.35" diaginertia="0.00181517 0.00153422 0.00116212" />
+        <joint name="right_hip_pitch_joint" axis="0 1 0" range="-2.5307 2.8798" />
+        <geom class="visual" material="black" mesh="right_hip_pitch_link" />
+        <geom class="collision" material="black" mesh="right_hip_pitch_link" contype="0" conaffinity="0" />
+        <body name="right_hip_roll_link" pos="0 -0.052 -0.030465" quat="0.996179 0 -0.0873386 0">
+          <inertial pos="0.029812 0.001045 -0.087934" quat="0.977808 1.97119e-05 0.205576 0.0403793" mass="1.52" diaginertia="0.00254986 0.00241169 0.00148755" />
+          <joint name="right_hip_roll_joint" axis="1 0 0" range="-2.9671 0.5236" />
+          <geom class="visual" mesh="right_hip_roll_link" />
+          <geom class="collision" mesh="right_hip_roll_link" contype="0" conaffinity="0" />
+          <body name="right_hip_yaw_link" pos="0.025001 0 -0.12412">
+            <inertial pos="-0.057709 0.010981 -0.15078" quat="0.751181 0.223482 0.15832 0.600598" mass="1.702" diaginertia="0.00776166 0.00717575 0.00160139" />
+            <joint name="right_hip_yaw_joint" axis="0 0 1" range="-2.7576 2.7576" />
+            <geom class="visual" mesh="right_hip_yaw_link" />
+            <geom class="collision" mesh="right_hip_yaw_link" contype="0" conaffinity="0" />
+            <body name="right_knee_link" pos="-0.078273 -0.0021489 -0.17734" quat="0.996179 0 0.0873386 0">
+              <inertial pos="0.005457 -0.003964 -0.12074" quat="0.923439 0.0345276 0.0116333 -0.382012" mass="1.932" diaginertia="0.011374 0.0112843 0.00146452" />
+              <joint name="right_knee_joint" axis="0 1 0" range="-0.087267 2.8798" />
+              <geom class="visual" mesh="right_knee_link" />
+              <geom class="collision" mesh="right_knee_link" contype="0" conaffinity="0" />
+              <body name="right_ankle_pitch_link" pos="0 9.4445e-05 -0.30001">
+                <inertial pos="-0.007269 0 0.011137" quat="0.603053 0.369225 0.369225 0.603053" mass="0.074" diaginertia="1.89e-05 1.40805e-05 6.9195e-06" />
+                <joint name="right_ankle_pitch_joint" axis="0 1 0" range="-0.87267 0.5236" />
+                <geom class="visual" mesh="right_ankle_pitch_link" />
+                <geom class="collision" mesh="right_ankle_pitch_link" contype="0" conaffinity="0" />
+                <body name="right_ankle_roll_link" pos="0 0 -0.017558">
+                  <inertial pos="0.026505 0 -0.016425" quat="0.000481092 0.728482 0.000618967 0.685065" mass="0.608" diaginertia="0.00167218 0.0016161 0.000217621" />
+                  <joint name="right_ankle_roll_joint" axis="1 0 0" range="-0.2618 0.2618" />
+                  <geom class="visual" material="black" mesh="right_ankle_roll_link" />
+                  <geom class="foot" pos="-0.05 0.025 -0.03" contype="0" conaffinity="0" />
+                  <geom class="foot" pos="-0.05 -0.025 -0.03" contype="0" conaffinity="0" />
+                  <geom class="foot" pos="0.12 0.03 -0.03" contype="0" conaffinity="0" />
+                  <geom class="foot" pos="0.12 -0.03 -0.03" contype="0" conaffinity="0" />
+                  <site name="right_foot" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="waist_yaw_link">
+        <inertial pos="0.003494 0.000233 0.018034" quat="0.289697 0.591001 -0.337795 0.672821" mass="0.214" diaginertia="0.000163531 0.000107714 0.000102205" />
+        <joint name="waist_yaw_joint" axis="0 0 1" range="-2.618 2.618" />
+        <geom class="visual" mesh="waist_yaw_link" />
+        <body name="waist_roll_link" pos="-0.0039635 0 0.044">
+          <inertial pos="0 2.3e-05 0" quat="0.5 0.5 -0.5 0.5" mass="0.086" diaginertia="8.245e-06 7.079e-06 6.339e-06" />
+          <joint name="waist_roll_joint" axis="1 0 0" range="-0.52 0.52" />
+          <geom class="visual" mesh="waist_roll_link" />
+          <body name="torso_link">
+            <inertial pos="0.00203158 0.000339683 0.184568" quat="0.999803 -6.03319e-05 0.0198256 0.00131986" mass="7.818" diaginertia="0.121847 0.109825 0.0273735" />
+            <joint name="waist_pitch_joint" axis="0 1 0" range="-0.52 0.52" />
+            <geom class="visual" mesh="torso_link" />
+            <geom class="collision" mesh="torso_link" contype="0" conaffinity="0" />
+            <geom pos="0.0039635 0 -0.044" quat="1 0 0 0" class="visual" material="black" mesh="logo_link" />
+            <geom pos="0.0039635 0 -0.044" quat="1 0 0 0" class="collision" material="black" mesh="logo_link" contype="0" conaffinity="0" />
+            <geom pos="0.0039635 0 -0.044" quat="1 0 0 0" class="visual" material="black" mesh="head_link" />
+            <geom pos="0.0039635 0 -0.044" quat="1 0 0 0" class="collision" material="black" mesh="head_link" contype="0" conaffinity="0" />
+            <site name="imu_in_torso" pos="-0.03959 -0.00224 0.14792" size="0.01" />
+            <body name="left_shoulder_pitch_link" pos="0.0039563 0.10022 0.24778" quat="0.990264 0.139201 1.38722e-05 -9.86868e-05">
+              <inertial pos="0 0.035892 -0.011628" quat="0.654152 0.0130458 -0.326267 0.68225" mass="0.718" diaginertia="0.000465864 0.000432842 0.000406394" />
+              <joint name="left_shoulder_pitch_joint" axis="0 1 0" range="-3.0892 2.6704" />
+              <geom class="visual" mesh="left_shoulder_pitch_link" />
+              <geom size="0.03 0.025" pos="0 0.04 -0.01" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.7 0.7 0.7 1" class="collision" contype="0" conaffinity="0" />
+              <body name="left_shoulder_roll_link" pos="0 0.038 -0.013831" quat="0.990268 -0.139172 0 0">
+                <inertial pos="-0.000227 0.00727 -0.063243" quat="0.701256 -0.0196223 -0.00710317 0.712604" mass="0.643" diaginertia="0.000691311 0.000618011 0.000388977" />
+                <joint name="left_shoulder_roll_joint" axis="1 0 0" range="-1.5882 2.2515" />
+                <geom class="visual" mesh="left_shoulder_roll_link" />
+                <geom size="0.03 0.015" pos="-0.004 0.006 -0.053" type="cylinder" rgba="0.7 0.7 0.7 1" class="collision" contype="0" conaffinity="0" />
+                <body name="left_shoulder_yaw_link" pos="0 0.00624 -0.1032">
+                  <inertial pos="0.010773 -0.002949 -0.072009" quat="0.716879 -0.0964829 -0.0679942 0.687134" mass="0.734" diaginertia="0.00106187 0.00103217 0.000400661" />
+                  <joint name="left_shoulder_yaw_joint" axis="0 0 1" range="-2.618 2.618" />
+                  <geom class="visual" mesh="left_shoulder_yaw_link" />
+                  <geom class="collision" mesh="left_shoulder_yaw_link" contype="0" conaffinity="0" />
+                  <body name="left_elbow_link" pos="0.015783 0 -0.080518">
+                    <inertial pos="0.064956 0.004454 -0.010062" quat="0.541765 0.636132 0.388821 0.388129" mass="0.6" diaginertia="0.000443035 0.000421612 0.000259353" />
+                    <joint name="left_elbow_joint" axis="0 1 0" range="-1.0472 2.0944" />
+                    <geom class="visual" mesh="left_elbow_link" />
+                    <geom class="collision" mesh="left_elbow_link" contype="0" conaffinity="0" />
+                    <body name="left_wrist_roll_link" pos="0.1 0.00188791 -0.01">
+                      <inertial pos="0.0171394 0.000537591 4.8864e-07" quat="0.575338 0.411667 -0.574906 0.411094" mass="0.085445" diaginertia="5.48211e-05 4.96646e-05 3.57798e-05" />
+                      <joint name="left_wrist_roll_joint" axis="1 0 0" range="-1.97222 1.97222" />
+                      <geom class="visual" mesh="left_wrist_roll_link" />
+                      <geom class="collision" mesh="left_wrist_roll_link" contype="0" conaffinity="0" />
+                      <body name="left_wrist_pitch_link" pos="0.038 0 0">
+                        <inertial pos="0.0229999 -0.00111685 -0.00111658" quat="0.249998 0.661363 0.293036 0.643608" mass="0.48405" diaginertia="0.000430353 0.000429873 0.000164648" />
+                        <joint name="left_wrist_pitch_joint" axis="0 1 0" range="-1.61443 1.61443" />
+                        <geom class="visual" mesh="left_wrist_pitch_link" />
+                        <geom class="collision" mesh="left_wrist_pitch_link" contype="0" conaffinity="0" />
+                        <body name="left_wrist_yaw_link" pos="0.046 0 0">
+                          <inertial pos="0.0708244 0.000191745 0.00161742" quat="0.510571 0.526295 0.468078 0.493188" mass="0.254576" diaginertia="0.000646113 0.000559993 0.000147566" />
+                          <joint name="left_wrist_yaw_joint" axis="0 0 1" range="-1.61443 1.61443" />
+                          <geom class="visual" mesh="left_wrist_yaw_link" />
+                          <geom class="collision" mesh="left_wrist_yaw_link" contype="0" conaffinity="0" />
+                          <body name="left_tool">
+                            <body name="left_dex1" pos=".0415 0 0">
+                              <inertial pos="0.038124 -5.1021E-05 7.257E-05" mass="0.3649" fullinertia="0.00013059 9.1848E-05 7.1401E-05 6.8208E-08 -8.5905E-08 -5.2808E-07" />
+                              <geom type="mesh" mesh="Dex1_base_link" rgba=".22 .25 .29 1" contype="0" conaffinity="0" group="2" mass="0" />
+                              <body name="left_dex1_finger_1" pos="0.0633 0.024916 0.010658">
+                                <joint name="left_jaw_1" type="slide" axis="0 -1 0" range="0 .041" damping="2" frictionloss=".01" armature=".002" />
+                                <inertial pos="0.010081 -0.013559 -0.00195" mass="0.092189" fullinertia="2.5828E-05 1.5329E-05 3.671E-05 -5.9643E-07 7.4348E-07 -7.9102E-08" />
+                                <geom type="mesh" mesh="Dex1_finger_link_1" rgba=".065 .075 .09 1" contype="0" conaffinity="0" group="2" mass="0" />
+                              </body>
+                              <body name="left_dex1_finger_2" pos="0.0633 -0.024916 -0.010658">
+                                <joint name="left_jaw_2" type="slide" axis="0 1 0" range="0 .041" damping="2" frictionloss=".01" armature=".002" />
+                                <inertial pos="0.010081 0.013559 0.00195" mass="0.092189" fullinertia="2.5828E-05 1.5329E-05 3.671E-05 5.9643E-07 -7.4348E-07 -7.9102E-08" />
+                                <geom type="mesh" mesh="Dex1_finger_link_2" rgba=".065 .075 .09 1" contype="0" conaffinity="0" group="2" mass="0" />
+                              </body>
+                            </body>
+                            <site name="left_grip" pos=".181 0 0" size=".001" rgba="0 0 0 0" />
+                            <body name="lock_head" pos=".187 0 0">
+                              <geom name="lock_top" type="box" pos="0 0 .0026" size=".004 .005 .0014" rgba="1 .73 .06 1" mass=".00008" contype="2" conaffinity="4" friction=".45 .01 .001" solref=".004 1" />
+                              <geom name="lock_bottom" type="box" pos="0 0 -.0026" size=".004 .005 .0014" rgba="1 .73 .06 1" mass=".00008" contype="2" conaffinity="4" friction=".45 .01 .001" solref=".004 1" />
+                              <geom name="lock_a" type="box" pos="0 .00375 0" size=".004 .00125 .0012" rgba="1 .73 .06 1" mass=".00008" contype="2" conaffinity="4" friction=".45 .01 .001" solref=".004 1" />
+                              <geom name="lock_b" type="box" pos="0 -.00375 0" size=".004 .00125 .0012" rgba="1 .73 .06 1" mass=".00008" contype="2" conaffinity="4" friction=".45 .01 .001" solref=".004 1" />
+                              <site name="hole" size=".002" rgba="0 0 0 0" />
+                              <site name="loop_anchor" pos="-.004 0 -.004" size=".001" rgba="0 0 0 0" />
+                              <body name="strip_00" pos="-0.004 0 -0.004" quat="0.9353517617 0.02667122559 0.3452302904 -0.07226184533">
+                                <joint name="strip_00_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                <joint name="strip_00_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                <joint name="strip_00_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                <geom name="strip_geom_00" type="box" pos="0.0034374996675589735 0 0" size="0.0034774996675589736 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                <site name="strip_site_00" pos="0.0034374996675589735 0 0" size=".0005" rgba="0 0 0 0" />
+                                <body name="strip_01" pos="0.006874999335 -1.084202172e-19 -4.33680869e-19" quat="0.999998906 1.558331261e-17 -0.001479203672 -1.677590723e-17">
+                                  <joint name="strip_01_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                  <joint name="strip_01_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                  <joint name="strip_01_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                  <geom name="strip_geom_01" type="box" pos="0.0034374971412242444 0 0" size="0.0034774971412242445 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                  <site name="strip_site_01" pos="0.0034374971412242444 0 0" size=".0005" rgba="0 0 0 0" />
+                                  <body name="strip_02" pos="0.006874994282 0 -8.67361738e-19" quat="0.9999955437 -1.011873053e-17 -0.002985402803 4.13103308e-18">
+                                    <joint name="strip_02_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                    <joint name="strip_02_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                    <joint name="strip_02_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                    <geom name="strip_geom_02" type="box" pos="0.0034374919058755347 0 0" size="0.003477491905875535 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                    <site name="strip_site_02" pos="0.0034374919058755347 0 0" size=".0005" rgba="0 0 0 0" />
+                                    <body name="strip_03" pos="0.006874983812 0 8.67361738e-19" quat="0.9999896662 4.861777933e-18 -0.004546154578 -6.226256514e-18">
+                                      <joint name="strip_03_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                      <joint name="strip_03_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                      <joint name="strip_03_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                      <geom name="strip_geom_03" type="box" pos="0.0034374835705606663 0 0" size="0.0034774835705606664 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                      <site name="strip_site_03" pos="0.0034374835705606663 0 0" size=".0005" rgba="0 0 0 0" />
+                                      <body name="strip_04" pos="0.006874967141 -1.084202172e-19 0" quat="0.9999808462 -4.118800077e-17 -0.006189288763 5.55436448e-17">
+                                        <joint name="strip_04_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                        <joint name="strip_04_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                        <joint name="strip_04_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                        <geom name="strip_geom_04" type="box" pos="0.0034374715258878234 0 0" size="0.0034774715258878235 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                        <site name="strip_site_04" pos="0.0034374715258878234 0 0" size=".0005" rgba="0 0 0 0" />
+                                        <body name="strip_05" pos="0.006874943052 0 0" quat="0.9999684321 7.869716575e-17 -0.007945745141 -9.668847576e-17">
+                                          <joint name="strip_05_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                          <joint name="strip_05_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                          <joint name="strip_05_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                          <geom name="strip_geom_05" type="box" pos="0.003437454909498435 0 0" size="0.003477454909498435 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                          <site name="strip_site_05" pos="0.003437454909498435 0 0" size=".0005" rgba="0 0 0 0" />
+                                          <body name="strip_06" pos="0.006874909819 0 -4.33680869e-19" quat="0.9999515174 -5.31947274e-17 -0.009846972355 6.633991532e-17">
+                                            <joint name="strip_06_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                            <joint name="strip_06_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                            <joint name="strip_06_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                            <geom name="strip_geom_06" type="box" pos="0.0034374324920159586 0 0" size="0.0034774324920159587 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                            <site name="strip_site_06" pos="0.0034374324920159586 0 0" size=".0005" rgba="0 0 0 0" />
+                                            <body name="strip_07" pos="0.006874864984 0 0" quat="0.9999289112 -8.268999111e-18 -0.01192361682 6.552199047e-18">
+                                              <joint name="strip_07_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                              <joint name="strip_07_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                              <joint name="strip_07_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                              <geom name="strip_geom_07" type="box" pos="0.003437402700142915 0 0" size="0.003477402700142915 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                              <site name="strip_site_07" pos="0.003437402700142915 0 0" size=".0005" rgba="0 0 0 0" />
+                                              <body name="strip_08" pos="0.0068748054 0 -4.33680869e-19" quat="0.9998990566 4.910451766e-17 -0.01420833105 -7.153810553e-17">
+                                                <joint name="strip_08_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                <joint name="strip_08_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                <joint name="strip_08_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                <geom name="strip_geom_08" type="box" pos="0.00343736360182323 0 0" size="0.00347736360182323 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                <site name="strip_site_08" pos="0.00343736360182323 0 0" size=".0005" rgba="0 0 0 0" />
+                                                <body name="strip_09" pos="0.006874727204 0 -4.33680869e-19" quat="0.999860101 -9.540827621e-18 -0.01672657807 2.025225018e-17">
+                                                  <joint name="strip_09_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                  <joint name="strip_09_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                  <joint name="strip_09_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                  <geom name="strip_geom_09" type="box" pos="0.0034373129343897657 0 0" size="0.003477312934389766 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                  <site name="strip_site_09" pos="0.0034373129343897657 0 0" size=".0005" rgba="0 0 0 0" />
+                                                  <body name="strip_10" pos="0.006874625869 -2.168404345e-19 0" quat="0.9998099457 -9.845055162e-17 -0.01949544542 1.766788861e-16">
+                                                    <joint name="strip_10_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                    <joint name="strip_10_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                    <joint name="strip_10_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                    <geom name="strip_geom_10" type="box" pos="0.0034372482033220068 0 0" size="0.003477248203322007 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                    <site name="strip_site_10" pos="0.0034372482033220068 0 0" size=".0005" rgba="0 0 0 0" />
+                                                    <body name="strip_11" pos="0.006874496407 1.084202172e-19 0" quat="0.9997467245 1.826923849e-16 -0.02250526443 -3.453966951e-16">
+                                                      <joint name="strip_11_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                      <joint name="strip_11_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                      <joint name="strip_11_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                      <geom name="strip_geom_11" type="box" pos="0.0034371675590161416 0 0" size="0.0034771675590161417 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                      <site name="strip_site_11" pos="0.0034371675590161416 0 0" size=".0005" rgba="0 0 0 0" />
+                                                      <body name="strip_12" pos="0.006874335118 0 0" quat="0.9996691617 -9.841854311e-17 -0.02572094855 2.120356002e-16">
+                                                        <joint name="strip_12_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                        <joint name="strip_12_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                        <joint name="strip_12_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                        <geom name="strip_geom_12" type="box" pos="0.0034370704971177007 0 0" size="0.003477070497117701 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                        <site name="strip_site_12" pos="0.0034370704971177007 0 0" size=".0005" rgba="0 0 0 0" />
+                                                        <body name="strip_13" pos="0.006874140994 1.084202172e-19 -8.67361738e-19" quat="0.9995782657 -5.213522223e-17 -0.02903946857 1.210403439e-16">
+                                                          <joint name="strip_13_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                          <joint name="strip_13_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                          <joint name="strip_13_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                          <geom name="strip_geom_13" type="box" pos="0.00343695967890944 0 0" size="0.00347695967890944 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                          <site name="strip_site_13" pos="0.00343695967890944 0 0" size=".0005" rgba="0 0 0 0" />
+                                                          <body name="strip_14" pos="0.006873919358 0 0" quat="0.9994781437 2.190611875e-17 -0.03230232569 -5.753725533e-17">
+                                                            <joint name="strip_14_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                            <joint name="strip_14_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                            <joint name="strip_14_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                            <geom name="strip_geom_14" type="box" pos="0.0034368426551070136 0 0" size="0.0034768426551070137 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                            <site name="strip_site_14" pos="0.0034368426551070136 0 0" size=".0005" rgba="0 0 0 0" />
+                                                            <body name="strip_15" pos="0.00687368531 0 -2.168404345e-19" quat="0.9993782471 2.728444598e-17 -0.03525789622 -1.066436237e-16">
+                                                              <joint name="strip_15_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                              <joint name="strip_15_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                              <joint name="strip_15_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                              <geom name="strip_geom_15" type="box" pos="0.0034367330923340835 0 0" size="0.0034767330923340836 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                              <site name="strip_site_15" pos="0.0034367330923340835 0 0" size=".0005" rgba="0 0 0 0" />
+                                                              <body name="strip_16" pos="0.006873466185 0 0" quat="0.9992922977 4.577277894e-18 -0.03761520739 -3.100935898e-17">
+                                                                <joint name="strip_16_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                <joint name="strip_16_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                <joint name="strip_16_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                <geom name="strip_geom_16" type="box" pos="0.0034366489965824893 0 0" size="0.0034766489965824894 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                <site name="strip_site_16" pos="0.0034366489965824893 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                <body name="strip_17" pos="0.006873297993 0 0" quat="0.9992368408 -1.657539451e-18 -0.03906067051 2.321820632e-17">
+                                                                  <joint name="strip_17_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                  <joint name="strip_17_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                  <joint name="strip_17_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                  <geom name="strip_geom_17" type="box" pos="0.00343660807016207 0 0" size="0.00347660807016207 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                  <site name="strip_site_17" pos="0.00343660807016207 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                  <body name="strip_18" pos="0.00687321614 -2.168404345e-19 0" quat="0.9992243392 -7.370124547e-18 -0.03937918082 2.046707202e-16">
+                                                                    <joint name="strip_18_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                    <joint name="strip_18_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                    <joint name="strip_18_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                    <geom name="strip_geom_18" type="box" pos="0.0034366211400599675 0 0" size="0.0034766211400599676 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                    <site name="strip_site_18" pos="0.0034366211400599675 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                    <body name="strip_19" pos="0.00687324228 -2.168404345e-19 6.776263578e-21" quat="0.9992586934 -7.064559838e-18 -0.03849758011 -1.574337854e-16">
+                                                                      <joint name="strip_19_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                      <joint name="strip_19_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                      <joint name="strip_19_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                      <geom name="strip_geom_19" type="box" pos="0.0034366856529099653 0 0" size="0.0034766856529099654 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                      <site name="strip_site_19" pos="0.0034366856529099653 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                      <body name="strip_20" pos="0.006873371306 0 0" quat="0.999332862 -1.782243984e-17 -0.03652165039 -1.493351091e-16">
+                                                                        <joint name="strip_20_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                        <joint name="strip_20_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                        <joint name="strip_20_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                        <geom name="strip_geom_20" type="box" pos="0.0034367880338381984 0 0" size="0.0034767880338381985 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                        <site name="strip_site_20" pos="0.0034367880338381984 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                        <body name="strip_21" pos="0.006873576068 2.168404345e-19 0" quat="0.9994318833 5.528389453e-17 -0.03370327321 2.821833402e-16">
+                                                                          <joint name="strip_21_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                          <joint name="strip_21_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                          <joint name="strip_21_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                          <geom name="strip_geom_21" type="box" pos="0.003436909375459387 0 0" size="0.003476909375459387 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                          <site name="strip_site_21" pos="0.003436909375459387 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                          <body name="strip_22" pos="0.006873818751 -2.168404345e-19 2.168404345e-19" quat="0.9995394666 -6.845154261e-17 -0.03034558665 -2.764084734e-16">
+                                                                            <joint name="strip_22_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                            <joint name="strip_22_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                            <joint name="strip_22_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                            <geom name="strip_geom_22" type="box" pos="0.0034370321995843547 0 0" size="0.003477032199584355 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                            <site name="strip_site_22" pos="0.0034370321995843547 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                            <body name="strip_23" pos="0.006874064399 0 2.168404345e-19" quat="0.9996423709 -2.492727627e-17 -0.02674191986 -8.51414032e-17">
+                                                                              <joint name="strip_23_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                              <joint name="strip_23_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                              <joint name="strip_23_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                              <geom name="strip_geom_23" type="box" pos="0.0034371442019564572 0 0" size="0.0034771442019564574 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                              <site name="strip_site_23" pos="0.0034371442019564572 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                              <body name="strip_24" pos="0.006874288404 0 0" quat="0.9997330136 8.451674592e-17 -0.0231063079 2.271973499e-16">
+                                                                                <joint name="strip_24_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                <joint name="strip_24_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                <joint name="strip_24_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                <geom name="strip_geom_24" type="box" pos="0.00343723937433185 0 0" size="0.0034772393743318503 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                                <site name="strip_site_24" pos="0.00343723937433185 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                <body name="strip_25" pos="0.006874478749 0 0" quat="0.9998080987 1.334583111e-16 -0.01958994132 3.12038563e-16">
+                                                                                  <joint name="strip_25_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                  <joint name="strip_25_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                  <joint name="strip_25_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                  <geom name="strip_geom_25" type="box" pos="0.003437316511611135 0 0" size="0.0034773165116111352 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                                  <site name="strip_site_25" pos="0.003437316511611135 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                  <body name="strip_26" pos="0.006874633023 -1.084202172e-19 0" quat="0.9998677191 -3.228413523e-16 -0.01626481572 -6.80394647e-16">
+                                                                                    <joint name="strip_26_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                    <joint name="strip_26_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                    <joint name="strip_26_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                    <geom name="strip_geom_26" type="box" pos="0.003437376601775529 0 0" size="0.003477376601775529 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                                    <site name="strip_site_26" pos="0.003437376601775529 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                    <body name="strip_27" pos="0.006874753204 0 -4.33680869e-19" quat="0.999913477 2.248597393e-16 -0.01315441421 4.427990473e-16">
+                                                                                      <joint name="strip_27_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                      <joint name="strip_27_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                      <joint name="strip_27_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                      <geom name="strip_geom_27" type="box" pos="0.0034374219122872817 0 0" size="0.003477421912287282 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                                      <site name="strip_site_27" pos="0.0034374219122872817 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                      <body name="strip_28" pos="0.006874843825 0 4.33680869e-19" quat="0.9999474618 -6.212920839e-17 -0.01025054134 -1.188855674e-16">
+                                                                                        <joint name="strip_28_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                        <joint name="strip_28_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                        <joint name="strip_28_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                        <geom name="strip_geom_28" type="box" pos="0.0034374549474242124 0 0" size="0.0034774549474242125 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                                        <site name="strip_site_28" pos="0.0034374549474242124 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                        <body name="strip_29" pos="0.006874909895 0 0" quat="0.9999716847 1.758937871e-16 -0.007525275011 3.18178112e-16">
+                                                                                          <joint name="strip_29_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                          <joint name="strip_29_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                          <joint name="strip_29_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                          <geom name="strip_geom_29" type="box" pos="0.0034374778313641945 0 0" size="0.0034774778313641946 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                                          <site name="strip_site_29" pos="0.0034374778313641945 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                          <body name="strip_30" pos="0.006874955663 0 0" quat="0.9999878075 -2.450033724e-16 -0.004938099699 -4.292049088e-16">
+                                                                                            <joint name="strip_30_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                            <joint name="strip_30_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                            <joint name="strip_30_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                            <geom name="strip_geom_30" type="box" pos="0.003437492183531873 0 0" size="0.0034774921835318733 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                                            <site name="strip_site_30" pos="0.003437492183531873 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                            <body name="strip_31" pos="0.006874984367 0 0" quat="0.9999970101 5.458982639e-17 -0.002445364276 9.582908881e-17">
+                                                                                              <joint name="strip_31_twist" type="hinge" axis="1 0 0" limited="false" stiffness="0.0006" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                              <joint name="strip_31_bend" type="hinge" axis="0 1 0" limited="false" stiffness="0.004" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                              <joint name="strip_31_side" type="hinge" axis="0 0 1" limited="false" stiffness="0.025" springref="0" damping=".00006" armature=".0000002" frictionloss="0" />
+                                                                                              <geom name="strip_geom_31" type="box" pos="0.003437499092287031 0 0" size="0.003477499092287031 .0015 .0004" rgba="1 .79 .06 1" density="1150" contype="8" conaffinity="1" group="0" solref=".004 1" />
+                                                                                              <site name="strip_site_31" pos="0.003437499092287031 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                              <site name="strip_end" pos="0.006874998184574062 0 0" size=".0005" rgba="0 0 0 0" />
+                                                                                            </body>
+                                                                                          </body>
+                                                                                        </body>
+                                                                                      </body>
+                                                                                    </body>
+                                                                                  </body>
+                                                                                </body>
+                                                                              </body>
+                                                                            </body>
+                                                                          </body>
+                                                                        </body>
+                                                                      </body>
+                                                                    </body>
+                                                                  </body>
+                                                                </body>
+                                                              </body>
+                                                            </body>
+                                                          </body>
+                                                        </body>
+                                                      </body>
+                                                    </body>
+                                                  </body>
+                                                </body>
+                                              </body>
+                                            </body>
+                                          </body>
+                                        </body>
+                                      </body>
+                                    </body>
+                                  </body>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+            <body name="right_shoulder_pitch_link" pos="0.0039563 -0.10021 0.24778" quat="0.990264 -0.139201 1.38722e-05 9.86868e-05">
+              <inertial pos="0 -0.035892 -0.011628" quat="0.68225 -0.326267 0.0130458 0.654152" mass="0.718" diaginertia="0.000465864 0.000432842 0.000406394" />
+              <joint name="right_shoulder_pitch_joint" axis="0 1 0" range="-3.0892 2.6704" />
+              <geom class="visual" mesh="right_shoulder_pitch_link" />
+              <geom size="0.03 0.025" pos="0 -0.04 -0.01" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.7 0.7 0.7 1" class="collision" contype="0" conaffinity="0" />
+              <body name="right_shoulder_roll_link" pos="0 -0.038 -0.013831" quat="0.990268 0.139172 0 0">
+                <inertial pos="-0.000227 -0.00727 -0.063243" quat="0.712604 -0.00710317 -0.0196223 0.701256" mass="0.643" diaginertia="0.000691311 0.000618011 0.000388977" />
+                <joint name="right_shoulder_roll_joint" axis="1 0 0" range="-2.2515 1.5882" />
+                <geom class="visual" mesh="right_shoulder_roll_link" />
+                <geom size="0.03 0.015" pos="-0.004 -0.006 -0.053" type="cylinder" rgba="0.7 0.7 0.7 1" class="collision" contype="0" conaffinity="0" />
+                <body name="right_shoulder_yaw_link" pos="0 -0.00624 -0.1032">
+                  <inertial pos="0.010773 0.002949 -0.072009" quat="0.687134 -0.0679942 -0.0964829 0.716879" mass="0.734" diaginertia="0.00106187 0.00103217 0.000400661" />
+                  <joint name="right_shoulder_yaw_joint" axis="0 0 1" range="-2.618 2.618" />
+                  <geom class="visual" mesh="right_shoulder_yaw_link" />
+                  <geom class="collision" mesh="right_shoulder_yaw_link" contype="0" conaffinity="0" />
+                  <body name="right_elbow_link" pos="0.015783 0 -0.080518">
+                    <inertial pos="0.064956 -0.004454 -0.010062" quat="0.388129 0.388821 0.636132 0.541765" mass="0.6" diaginertia="0.000443035 0.000421612 0.000259353" />
+                    <joint name="right_elbow_joint" axis="0 1 0" range="-1.0472 2.0944" />
+                    <geom class="visual" mesh="right_elbow_link" />
+                    <geom class="collision" mesh="right_elbow_link" contype="0" conaffinity="0" />
+                    <body name="right_wrist_roll_link" pos="0.1 -0.00188791 -0.01">
+                      <inertial pos="0.0171394 -0.000537591 4.8864e-07" quat="0.411667 0.575338 -0.411094 0.574906" mass="0.085445" diaginertia="5.48211e-05 4.96646e-05 3.57798e-05" />
+                      <joint name="right_wrist_roll_joint" axis="1 0 0" range="-1.97222 1.97222" />
+                      <geom class="visual" mesh="right_wrist_roll_link" />
+                      <geom class="collision" mesh="right_wrist_roll_link" contype="0" conaffinity="0" />
+                      <body name="right_wrist_pitch_link" pos="0.038 0 0">
+                        <inertial pos="0.0229999 0.00111685 -0.00111658" quat="0.643608 0.293036 0.661363 0.249998" mass="0.48405" diaginertia="0.000430353 0.000429873 0.000164648" />
+                        <joint name="right_wrist_pitch_joint" axis="0 1 0" range="-1.61443 1.61443" />
+                        <geom class="visual" mesh="right_wrist_pitch_link" />
+                        <geom class="collision" mesh="right_wrist_pitch_link" contype="0" conaffinity="0" />
+                        <body name="right_wrist_yaw_link" pos="0.046 0 0">
+                          <inertial pos="0.0708244 -0.000191745 0.00161742" quat="0.493188 0.468078 0.526295 0.510571" mass="0.254576" diaginertia="0.000646113 0.000559993 0.000147566" />
+                          <joint name="right_wrist_yaw_joint" axis="0 0 1" range="-1.61443 1.61443" />
+                          <geom class="visual" mesh="right_wrist_yaw_link" />
+                          <geom class="collision" mesh="right_wrist_yaw_link" contype="0" conaffinity="0" />
+                          <body name="right_tool">
+                            <body name="right_dex1" pos=".0415 0 0">
+                              <inertial pos="0.038124 -5.1021E-05 7.257E-05" mass="0.3649" fullinertia="0.00013059 9.1848E-05 7.1401E-05 6.8208E-08 -8.5905E-08 -5.2808E-07" />
+                              <geom type="mesh" mesh="Dex1_base_link" rgba=".22 .25 .29 1" contype="0" conaffinity="0" group="2" mass="0" />
+                              <body name="right_dex1_finger_1" pos="0.0633 0.024916 0.010658">
+                                <joint name="right_jaw_1" type="slide" axis="0 -1 0" range="0 .041" damping="2" frictionloss=".01" armature=".002" />
+                                <inertial pos="0.010081 -0.013559 -0.00195" mass="0.092189" fullinertia="2.5828E-05 1.5329E-05 3.671E-05 -5.9643E-07 7.4348E-07 -7.9102E-08" />
+                                <geom type="mesh" mesh="Dex1_finger_link_1" rgba=".065 .075 .09 1" contype="0" conaffinity="0" group="2" mass="0" />
+                              </body>
+                              <body name="right_dex1_finger_2" pos="0.0633 -0.024916 -0.010658">
+                                <joint name="right_jaw_2" type="slide" axis="0 1 0" range="0 .041" damping="2" frictionloss=".01" armature=".002" />
+                                <inertial pos="0.010081 0.013559 0.00195" mass="0.092189" fullinertia="2.5828E-05 1.5329E-05 3.671E-05 5.9643E-07 -7.4348E-07 -7.9102E-08" />
+                                <geom type="mesh" mesh="Dex1_finger_link_2" rgba=".065 .075 .09 1" contype="0" conaffinity="0" group="2" mass="0" />
+                              </body>
+                            </body>
+                            <site name="right_grip" pos=".181 0 0" size=".001" rgba="0 0 0 0" />
+                            <geom name="rigid_tail" type="box" pos=".203 0 0" size=".022 .0015 .0004" rgba="1 .79 .08 1" mass=".00012" contype="4" conaffinity="2" friction=".4 .01 .001" solref=".004 1" />
+                            <site name="tip" pos=".225 0 0" size=".001" rgba="0 0 0 0" />
+                            <site name="tail_root" pos=".181 0 0" size=".001" rgba="0 0 0 0" />
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+    <light pos="1 -2 4" dir="-.2 .5 -1" diffuse=".9 .85 .75" castshadow="true" />
+    <light pos="-1 2 3" dir=".3 -.5 -1" diffuse=".4 .55 .7" castshadow="false" />
+    <geom name="floor" type="plane" size="4 4 .1" rgba=".14 .18 .22 1" />
+    <geom name="tabletop" type="box" pos=".53 0 .73" size=".37 .54 .025" rgba=".57 .43 .28 1" />
+    <geom name="cutting_mat" type="box" pos=".51 0 .757" size=".31 .46 .002" material="mat" />
+    <geom type="box" pos="0.24 -0.45 .355" size=".025 .025 .355" rgba=".12 .15 .19 1" />
+    <geom type="box" pos="0.24 0.45 .355" size=".025 .025 .355" rgba=".12 .15 .19 1" />
+    <geom type="box" pos="0.82 -0.45 .355" size=".025 .025 .355" rgba=".12 .15 .19 1" />
+    <geom type="box" pos="0.82 0.45 .355" size=".025 .025 .355" rgba=".12 .15 .19 1" />
+    <body pos=".67 -0.35 .77">
+      <geom type="box" size=".14 .085 .006" rgba=".5 .32 .15 1" />
+      <geom type="box" pos="-0.137 0 .032" size=".003 .085 .032" rgba=".64 .44 .23 1" />
+      <geom type="box" pos="0.137 0 .032" size=".003 .085 .032" rgba=".64 .44 .23 1" />
+      <geom type="box" pos="0 -0.082 .032" size=".14 .003 .032" rgba=".64 .44 .23 1" />
+      <geom type="box" pos="0 0.082 .032" size=".14 .003 .032" rgba=".64 .44 .23 1" />
+    </body>
+    <body pos=".67 0.35 .77">
+      <geom type="box" size=".14 .085 .006" rgba=".5 .32 .15 1" />
+      <geom type="box" pos="-0.137 0 .032" size=".003 .085 .032" rgba=".64 .44 .23 1" />
+      <geom type="box" pos="0.137 0 .032" size=".003 .085 .032" rgba=".64 .44 .23 1" />
+      <geom type="box" pos="0 -0.082 .032" size=".14 .003 .032" rgba=".64 .44 .23 1" />
+      <geom type="box" pos="0 0.082 .032" size=".14 .003 .032" rgba=".64 .44 .23 1" />
+    </body>
+    <geom name="base_fixture" type="box" pos="-.10 0 .39" size=".035 .1 .39" rgba=".09 .13 .17 1" />
+    <geom name="base_plate" type="box" pos="-.05 0 .01" size=".23 .23 .01" rgba=".1 .14 .18 1" />
+    <camera name="overview" pos="2.05 -2.45 1.6" xyaxes=".77 .64 0 -.14 .17 .975" fovy="38" />
+    <camera name="detail" pos="1.05 -.8 1.6" xyaxes=".75 .66 0 -.35 .4 .85" fovy="28" />
+  </worldbody>
+  <actuator>
+    <position class="g1" name="left_hip_pitch_joint" joint="left_hip_pitch_joint" forcerange="-88 88" />
+    <position class="g1" name="left_hip_roll_joint" joint="left_hip_roll_joint" forcerange="-139 139" />
+    <position class="g1" name="left_hip_yaw_joint" joint="left_hip_yaw_joint" forcerange="-88 88" />
+    <position class="g1" name="left_knee_joint" joint="left_knee_joint" forcerange="-139 139" />
+    <position class="g1" name="left_ankle_pitch_joint" joint="left_ankle_pitch_joint" forcerange="-50 50" />
+    <position class="g1" name="left_ankle_roll_joint" joint="left_ankle_roll_joint" forcerange="-50 50" />
+    <position class="g1" name="right_hip_pitch_joint" joint="right_hip_pitch_joint" forcerange="-88 88" />
+    <position class="g1" name="right_hip_roll_joint" joint="right_hip_roll_joint" forcerange="-139 139" />
+    <position class="g1" name="right_hip_yaw_joint" joint="right_hip_yaw_joint" forcerange="-88 88" />
+    <position class="g1" name="right_knee_joint" joint="right_knee_joint" forcerange="-139 139" />
+    <position class="g1" name="right_ankle_pitch_joint" joint="right_ankle_pitch_joint" forcerange="-50 50" />
+    <position class="g1" name="right_ankle_roll_joint" joint="right_ankle_roll_joint" forcerange="-50 50" />
+    <position class="g1" name="waist_yaw_joint" joint="waist_yaw_joint" forcerange="-88 88" />
+    <position class="g1" name="waist_roll_joint" joint="waist_roll_joint" forcerange="-50 50" />
+    <position class="g1" name="waist_pitch_joint" joint="waist_pitch_joint" forcerange="-50 50" />
+    <position class="g1" name="left_shoulder_pitch_joint" joint="left_shoulder_pitch_joint" forcerange="-25 25" />
+    <position class="g1" name="left_shoulder_roll_joint" joint="left_shoulder_roll_joint" forcerange="-25 25" />
+    <position class="g1" name="left_shoulder_yaw_joint" joint="left_shoulder_yaw_joint" forcerange="-25 25" />
+    <position class="g1" name="left_elbow_joint" joint="left_elbow_joint" forcerange="-25 25" />
+    <position class="g1" name="left_wrist_roll_joint" joint="left_wrist_roll_joint" forcerange="-25 25" />
+    <position class="g1" name="left_wrist_pitch_joint" joint="left_wrist_pitch_joint" forcerange="-5 5" />
+    <position class="g1" name="left_wrist_yaw_joint" joint="left_wrist_yaw_joint" forcerange="-5 5" />
+    <position class="g1" name="right_shoulder_pitch_joint" joint="right_shoulder_pitch_joint" forcerange="-25 25" />
+    <position class="g1" name="right_shoulder_roll_joint" joint="right_shoulder_roll_joint" forcerange="-25 25" />
+    <position class="g1" name="right_shoulder_yaw_joint" joint="right_shoulder_yaw_joint" forcerange="-25 25" />
+    <position class="g1" name="right_elbow_joint" joint="right_elbow_joint" forcerange="-25 25" />
+    <position class="g1" name="right_wrist_roll_joint" joint="right_wrist_roll_joint" forcerange="-25 25" />
+    <position class="g1" name="right_wrist_pitch_joint" joint="right_wrist_pitch_joint" forcerange="-5 5" />
+    <position class="g1" name="right_wrist_yaw_joint" joint="right_wrist_yaw_joint" forcerange="-5 5" />
+    <position name="left_jaw_1" joint="left_jaw_1" kp="250" kv="4" ctrlrange="0 .041" forcerange="-20 20" />
+    <position name="left_jaw_2" joint="left_jaw_2" kp="250" kv="4" ctrlrange="0 .041" forcerange="-20 20" />
+    <position name="right_jaw_1" joint="right_jaw_1" kp="250" kv="4" ctrlrange="0 .041" forcerange="-20 20" />
+    <position name="right_jaw_2" joint="right_jaw_2" kp="250" kv="4" ctrlrange="0 .041" forcerange="-20 20" />
+  </actuator>
+  <sensor>
+    <gyro site="imu_in_torso" name="imu-torso-angular-velocity" cutoff="34.9" noise="0.0005" />
+    <accelerometer site="imu_in_torso" name="imu-torso-linear-acceleration" cutoff="157" noise="0.01" />
+    <gyro site="imu_in_pelvis" name="imu-pelvis-angular-velocity" cutoff="34.9" noise="0.0005" />
+    <accelerometer site="imu_in_pelvis" name="imu-pelvis-linear-acceleration" cutoff="157" noise="0.01" />
+  </sensor>
+  <equality>
+    <joint joint1="left_jaw_1" joint2="left_jaw_2" polycoef="0 1 0 0 0" />
+    <joint joint1="right_jaw_1" joint2="right_jaw_2" polycoef="0 1 0 0 0" />
+    <connect name="strip_grasp" site1="strip_end" site2="tail_root" solref=".003 1" solimp=".995 .999 .0001" />
+  </equality>
+  <visual>
+    <global offwidth="1600" offheight="1000" azimuth="145" elevation="-18" />
+    <quality shadowsize="4096" offsamples="4" />
+    <headlight diffuse=".65 .65 .65" ambient=".3 .3 .3" specular=".2 .2 .2" />
+    <map znear=".01" zfar="30" />
+  </visual>
+</mujoco>

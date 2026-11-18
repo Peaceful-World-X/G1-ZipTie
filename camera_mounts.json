@@ -1,0 +1,40 @@
+{
+  "model": "RealSense D405",
+  "vertical_fov_deg": 58,
+  "left": {
+    "case_center_tool_m": [
+      0.097,
+      -0.022,
+      0.064
+    ],
+    "look_at_tool_m": [
+      0.199,
+      0.012,
+      0.01
+    ],
+    "roll_deg": 15,
+    "mount_foot_tool_m": [
+      0.064,
+      -0.008,
+      0.031
+    ]
+  },
+  "right": {
+    "case_center_tool_m": [
+      0.098,
+      -0.059,
+      0.055
+    ],
+    "look_at_tool_m": [
+      0.195,
+      -0.016,
+      -0.004
+    ],
+    "roll_deg": 44,
+    "mount_foot_tool_m": [
+      0.065,
+      -0.014,
+      0.031
+    ]
+  }
+}

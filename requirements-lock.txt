@@ -1,0 +1,13 @@
+absl-py==2.5.1
+etils==1.15.0
+fsspec==2026.9.0
+glfw==2.11.0
+imageio==2.38.2
+imageio-ffmpeg==0.8.1
+mujoco==3.3.6
+numpy==2.4.6
+pillow==13.0.0
+pyopengl==3.1.10
+scipy==1.17.1
+typing-extensions==4.16.0
+zipp==4.1.2
